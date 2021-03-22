@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -9,22 +9,39 @@
     <script>
         var reflexoIniciado = false;
         var corTrocada = false;
-        var tempoDecorrido;  
+        var tempoDecorrido;
         var tempoClicado;
         var tempoAtual;
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        function mudarCorr() {
+            var letras = "0123456789ABCDEF".split('');
+            var cor = "#";
+            for (var i = 0; i < 6; i++) {
+                cor += letras[Math.floor(Math.random() * 16)];
+            }
+            document.body.style.backgroundColor = cor;
+        }
+        const mudarCor = async (numeroAleatorio) => 
+        {
+                alert(numeroAleatorio);
+                await delay(numeroAleatorio);
+                mudarCorr();
+        }
 
         function iniciarReflexo() {
             reflexoIniciado = true;
-            tempoClicado = new Date().getTime() / 1000; 
+            tempoClicado = new Date().getTime() / 1000;
         }
 
         function pararReflexo() {
-            if (reflexoIniciado != true){
+            if (reflexoIniciado != true) {
                 alert('Aperte no botão iniciar primeiro!');
             }
-            else{
+            else {
+                var numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+                mudarCor(numeroAleatorio);
                 tempoAtual = new Date().getTime() / 1000;
-                //tempoDecorrido = tempoAtual - tempoClicado;
                 reflexoIniciado = false;
                 tempoDecorrido = tempoAtual - tempoClicado;
                 alert(tempoDecorrido);
@@ -36,6 +53,7 @@
 <body>
     <center>
         <input type="button" value="Iniciar" onclick="iniciarReflexo()">
+        <input type="button" value="Mudar" onclick="mudarCor()">
         <input type="button" value="Parar" onclick="pararReflexo()">
     </center>
 </body>
