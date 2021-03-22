@@ -10,13 +10,25 @@
         var reflexoIniciado = false;
         var corTrocada = false;
         var tempoDecorrido;  
+        var tempoClicado;
+        var tempoAtual;
 
         function iniciarReflexo() {
-            alert('Reflexo iniciado');
+            reflexoIniciado = true;
+            tempoClicado = new Date().getTime() / 1000; 
         }
 
         function pararReflexo() {
-            alert('Reflexo Parado');
+            if (reflexoIniciado != true){
+                alert('Aperte no botão iniciar primeiro!');
+            }
+            else{
+                tempoAtual = new Date().getTime() / 1000;
+                //tempoDecorrido = tempoAtual - tempoClicado;
+                reflexoIniciado = false;
+                tempoDecorrido = tempoAtual - tempoClicado;
+                alert(tempoDecorrido);
+            }
         }
     </script>
 </head>
