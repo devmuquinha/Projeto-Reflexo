@@ -7,14 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reflexo</title>
     <script>
-        var reflexoIniciado = false;
-        var corTrocada = false;
         var tempoDecorrido;
         var tempoClicado;
         var tempoAtual;
+        iniciarVariaveis();
         const delay = ms => new Promise(res => setTimeout(res, ms));
 
-        function mudarCorr() {
+        const mudarCor = async () => {
             var letras = "0123456789ABCDEF".split('');
             var cor = "#";
             for (var i = 0; i < 6; i++) {
@@ -22,16 +21,21 @@
             }
             document.body.style.backgroundColor = cor;
         }
-        const mudarCor = async (numeroAleatorio) => 
-        {
-                alert(numeroAleatorio);
-                await delay(numeroAleatorio);
-                mudarCorr();
+
+        const iniciarReflexo = async () => {
+            reflexoIniciado = true;
+            var numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+            numeroAleatorio = numeroAleatorio * 1000;
+            await delay(numeroAleatorio);
+            mudarCor();
+            corMudada = true;
+            tempoClicado = new Date().getTime() / 1000;
         }
 
-        function iniciarReflexo() {
-            reflexoIniciado = true;
-            tempoClicado = new Date().getTime() / 1000;
+        function iniciarVariaveis() {
+            var corMudada = false;
+            var reflexoIniciado = false;
+            var corTrocada = false;
         }
 
         function pararReflexo() {
@@ -39,12 +43,15 @@
                 alert('Aperte no botão iniciar primeiro!');
             }
             else {
-                var numeroAleatorio = Math.floor(Math.random() * 10) + 1;
-                mudarCor(numeroAleatorio);
-                tempoAtual = new Date().getTime() / 1000;
-                reflexoIniciado = false;
-                tempoDecorrido = tempoAtual - tempoClicado;
-                alert(tempoDecorrido);
+                if (corMudada != true) {
+                    alert('A cor ainda não foi mudada!');
+                    location.reload();
+                } else {
+                    tempoAtual = new Date().getTime() / 1000;
+                    reflexoIniciado = false;
+                    tempoDecorrido = tempoAtual - tempoClicado;
+                    alert('Seu tempo foi ' + parseFloat(tempoDecorrido).toFixed(4) + " segundos!");
+                }
             }
         }
     </script>
@@ -52,9 +59,10 @@
 
 <body>
     <center>
+        <h1>Teste seus reflexos!</h1>
         <input type="button" value="Iniciar" onclick="iniciarReflexo()">
-        <input type="button" value="Mudar" onclick="mudarCor()">
         <input type="button" value="Parar" onclick="pararReflexo()">
+        <input type="button" value="Reiniciar" onclick="location.reload()">
     </center>
 </body>
 
