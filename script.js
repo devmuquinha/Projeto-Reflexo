@@ -15,6 +15,7 @@ const mudarCor = async () => {
 
 
 function testarReflexo() {
+    document.getElementById('explicacao').style.display = 'none';
     if (reflexoIniciado == false) {
         iniciarReflexo();
     }

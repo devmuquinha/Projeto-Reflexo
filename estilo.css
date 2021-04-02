@@ -13,6 +13,7 @@ body{
 }
 #tabela{
     font-size: 15px;
+    float: left;
 }
 input{
     background-color: #666464;
@@ -46,6 +47,7 @@ input{
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
+    margin-left: -10%;
   }
   
   .botao:hover {background-color: #3e8e41}
@@ -55,4 +57,18 @@ input{
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
-  
+  #explicacao{ 
+    overflow-x: visible; 
+    overflow-y: visible;
+    background-color: rgb(55, 58, 100);
+    padding: 0px 15px; 
+    width: 150px; height: 90px; 
+    margin-left: auto; 
+    margin-right: 10%;
+    border: 2px solid #222222;
+    border-radius: 25px;
+  }
+  h3{
+    text-align: center; 
+    font-size: 13px;
+  }
