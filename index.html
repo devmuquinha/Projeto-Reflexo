@@ -5,62 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="estilo.css">
     <title>Reflexo</title>
-    <script>
-        var corMudada = false;
-        var reflexoIniciado = false;
-        var corTrocada = false;
-        var tempoDecorrido;
-        var tempoClicado;
-        var tempoAtual;
-        const delay = ms => new Promise(res => setTimeout(res, ms));
-
-        const mudarCor = async () => {
-            var letras = "0123456789ABCDEF".split('');
-            var cor = "#";
-            for (var i = 0; i < 6; i++) {
-                cor += letras[Math.floor(Math.random() * 16)];
-            }
-            document.body.style.backgroundColor = cor;
-        }
-
-        const iniciarReflexo = async () => {
-            reflexoIniciado = true;
-            var numeroAleatorio = Math.floor(Math.random() * 10) + 1;
-            numeroAleatorio = numeroAleatorio * 1000;
-            await delay(numeroAleatorio);
-            mudarCor();
-            corMudada = true;
-            tempoClicado = new Date().getTime() / 1000;
-        }
-
-        function pararReflexo() {
-            if (reflexoIniciado == false) {
-                alert('Aperte no botão iniciar primeiro!');
-            }
-            else {
-                if (corMudada == false) {
-                    alert('A cor ainda não foi mudada!');
-                    location.reload();
-                } else {
-                    tempoAtual = new Date().getTime() / 1000;
-                    reflexoIniciado = false;
-                    tempoDecorrido = tempoAtual - tempoClicado;
-                    alert('Seu reflexo foi de ' + parseFloat(tempoDecorrido).toFixed(4) + " segundos!");
-                    location.reload();
-                }
-            }
-        }
-    </script>
 </head>
 
 <body>
-    <center>
-        <h1>Teste seus reflexos!</h1>
-        <input type="button" value="Iniciar" onclick="iniciarReflexo()">
-        <input type="button" value="Parar" onclick="pararReflexo()">
-        <input type="button" value="Reiniciar" onclick="location.reload()">
-    </center>
+        <div class="main">
+            <h1>Teste seus reflexos!</h1>
+
+            <table id="tabela">
+                <thead>
+                <tbody>
+                    <tr> <th> Pontuação (segundos) </th> </tr>
+                    <!--  <tr> <td> Onde as variáveis são colocadas </td> </tr>  !-->
+                </tbody>
+                </thead>
+            </table>
+
+
+            <div class="divBotoes">
+                <input id="botaoTestar" class="botao" type="button" value="Iniciar" onclick="testarReflexo()">
+            </div>
+        </div>
+
 </body>
 
 </html>

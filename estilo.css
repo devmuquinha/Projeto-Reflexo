@@ -1,0 +1,58 @@
+body{
+    align-items: center;
+    background-color: #222222;
+}
+
+.main{
+    font-family: Arial;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    display: block;
+    margin:auto;
+}
+#tabela{
+    font-size: 15px;
+}
+input{
+    background-color: #666464;
+    border: none;
+    color: white;
+    padding: 16px 31px;
+    font-size: 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .reiniciar{
+    padding: 11px 26px;
+    font-size: 17px;
+    position: fixed;
+    top: 75%;
+    left: 75%;
+    /* bring your own prefixes */
+    transform: translate(-75%, -75%);
+  }
+  
+  .botao {    
+    outline: none;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .botao:hover {background-color: #3e8e41}
+  
+  .botao:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
