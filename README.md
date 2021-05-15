@@ -1,5 +1,5 @@
 # ProjetoReflexo
-<h3> Uma página em javascript onde o usuario pode testar seus reflexos! </h3> <br>
+<h3> Uma página em javascript onde o usuário pode testar seus reflexos! </h3> <br>
 Usuario aperta o botão <br>
 <img src="img/testar.png" width="480"> <br>
 A cor muda <br>
